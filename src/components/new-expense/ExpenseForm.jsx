@@ -29,14 +29,14 @@ export const ExpenseForm = ({ onShow, onNewExpense }) => {
       <StyledSection>
         <LeftDiv>
           <FormInput
-            lableText="Заголовок"
+            labelText="Заголовок"
             inputType="text"
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <FormInput
-            lableText="Датировать"
+            labelText="Датировать"
             inputType="date"
             id="date"
             value={date}
@@ -45,7 +45,7 @@ export const ExpenseForm = ({ onShow, onNewExpense }) => {
         </LeftDiv>
         <RightDiv>
           <FormInput
-            lableText="Количество"
+            labelText="Количество"
             inputType="number"
             id="amount"
             value={amount}

@@ -12,7 +12,7 @@ export const Users = () => {
       setUsers(result);
       console.log(result);
     } catch (error) {
-      throw new Error();
+      throw new Error("Ошибка при загрузке пользователей!", error);
     }
   };
   useEffect(() => {
@@ -26,22 +26,45 @@ export const Users = () => {
   return (
     <UsersContainer>
       <h1>Список пользователей</h1>
-      {users.map((user) => (
-        <li key={user.id}>
-          <h2>{user.name}</h2>
-          <p>Email: {user.email}</p>
-          <p>Username: {user.username}</p>
-          <p>Company: {user.company.name}</p>
-        </li>
-      ))}
+      <StyledDivLi>
+        {users.map((user) => (
+          <StyledLi key={user.id}>
+            <h3>{user.name}</h3>
+            <p>Email: {user.email}</p>
+            <p>Username: {user.username}</p>
+            <p>Company: {user.company.name}</p>
+          </StyledLi>
+        ))}
+      </StyledDivLi>
     </UsersContainer>
   );
 };
 const UsersContainer = styled.div`
+  width: 97%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   background-color: #ffffff;
+  margin: 20px;
+  padding: 20px 0px;
+`;
+const StyledDivLi = styled.div`
+  width: 94%;
+  height: auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
-  margin: 20px;
+  align-items: center;
+  gap: 10px;
+  background-color: #f8dfff;
+  box-shadow: 1px 1px 1.5px 1.7px rgb(175, 174, 174);
+`;
+const StyledLi = styled.li`
+  list-style: none;
+  margin: 20px 20px;
+  padding: 10px 10px;
+  box-shadow: 1px 1px 1.5px 1.7px rgb(175, 174, 174);
 `;
