@@ -3,13 +3,11 @@ import styled from "styled-components";
 
 export const Users = () => {
   const [users, setUsers] = useState([]);
-  const getUsers = async () => {
+  const getUsers = async (controller) => {
     try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users"
-      );
+      const response = await fetch("https://dummyjson.com/users");
       const result = await response.json();
-      setUsers(result);
+      setUsers(result.users);
       console.log(result);
     } catch (error) {
       throw new Error("Ошибка при загрузке пользователей!", error);
@@ -29,10 +27,18 @@ export const Users = () => {
       <StyledDivLi>
         {users.map((user) => (
           <StyledLi key={user.id}>
-            <h3>{user.name}</h3>
-            <p>Email: {user.email}</p>
-            <p>Username: {user.username}</p>
-            <p>Company: {user.company.name}</p>
+            <StyledImg
+              src={user.image}
+              alt={`${user.firstName} ${user.lastName}`}
+            />
+            <div>
+              <h3>
+                {user.firstName} {user.lastName}
+              </h3>
+              <p>Email: {user.email}</p>
+              <p>Username: {user.username}</p>
+              <p>Company: {user.company.name}</p>
+            </div>
           </StyledLi>
         ))}
       </StyledDivLi>
@@ -67,4 +73,15 @@ const StyledLi = styled.li`
   margin: 20px 20px;
   padding: 10px 10px;
   box-shadow: 1px 1px 1.5px 1.7px rgb(175, 174, 174);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const StyledImg = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
 `;

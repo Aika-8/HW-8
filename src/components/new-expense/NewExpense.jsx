@@ -76,6 +76,7 @@ const DivBtn = styled.section`
   justify-content: center;
   align-items: center;
   padding: 0px 250px;
+  margin-top: 100px
 `;
 const DivWrapper = styled.div`
   width: 780px;
